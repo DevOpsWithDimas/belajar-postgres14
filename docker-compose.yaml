@@ -1,0 +1,39 @@
+version: '3.6'
+services:
+  postgres:
+    image: ${PRIVATE_REPOSITORY}postgres:${POSTGRES_VERSION}
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_DB
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  flyway: 
+    image: ${PRIVATE_REPOSITORY}flyway/flyway
+    command: -url=jdbc:postgresql://postgres:5432/hr -schemas=hr -user=hr -password=hr -connectRetries=60 migrate
+    profiles:
+      - migrate
+    volumes:
+      - ./db/migration:/flyway/sql
+    depends_on:
+      - postgres
+
+  pgadmin4:
+    image: ${PRIVATE_REPOSITORY}dpage/pgadmin4
+    profiles:
+      - debug
+    environment:
+      - PGADMIN_DEFAULT_PASSWORD=${POSTGRES_PASSWORD}
+      - PGADMIN_DEFAULT_EMAIL=${POSTGRES_USER}@example.com
+    ports:
+      - 55432:80
+    volumes:
+      - pg_admin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+volumes:
+  pg_data:
+  pg_admin_data:
