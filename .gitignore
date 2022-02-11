@@ -1,0 +1,10 @@
+## Mac OS
+.DS_Store
+
+## InteliJ IDEA
+.idea/
+*.iml
+*.ipl
+*.iwl
+
+
