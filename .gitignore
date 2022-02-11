@@ -7,4 +7,7 @@
 *.ipl
 *.iwl
 
+## postgresql backup
 
+backup/*
+!backup/.gitkeep
