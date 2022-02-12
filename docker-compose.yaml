@@ -13,7 +13,7 @@ services:
 
   flyway: 
     image: ${PRIVATE_REPOSITORY}flyway/flyway
-    command: -url=jdbc:postgresql://postgres:5432/hr -schemas=hr -user=hr -password=hr -connectRetries=60 migrate
+    command: -url=jdbc:postgresql://postgres:5432/hr -user=hr -password=hr -connectRetries=60 migrate
     profiles:
       - migrate
     volumes:
