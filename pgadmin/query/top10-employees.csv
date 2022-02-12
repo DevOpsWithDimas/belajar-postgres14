@@ -1,0 +1,11 @@
+"employee_id","first_name","last_name","email","phone_number","job_id","salary","commission_pct","manager_id","department_id"
+100,"Steven","King","SKING","515.123.4567","AD_PRES",24000.0,NULL,NULL,90
+101,"Neena","Kochhar","NKOCHHAR","515.123.4568","AD_VP",17000.0,NULL,100,90
+102,"Lex","De Haan","LDEHAAN","515.123.4569","AD_VP",17000.0,NULL,100,90
+103,"Alexander","Hunold","AHUNOLD","590.423.4567","IT_PROG",9000.0,NULL,102,60
+104,"Bruce","Ernst","BERNST","590.423.4568","IT_PROG",6000.0,NULL,103,60
+105,"David","Austin","DAUSTIN","590.423.4569","IT_PROG",4800.0,NULL,103,60
+106,"Valli","Pataballa","VPATABAL","590.423.4560","IT_PROG",4800.0,NULL,103,60
+107,"Diana","Lorentz","DLORENTZ","590.423.5567","IT_PROG",4200.0,NULL,103,60
+108,"Nancy","Greenberg","NGREENBE","515.124.4569","FI_MGR",12000.0,NULL,101,100
+109,"Dimas","Maryanto","DFAVIET","515.124.4169","FI_ACCOUNT",9000.0,NULL,108,100
