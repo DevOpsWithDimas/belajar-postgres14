@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>2e37303f-e4d4-4b7f-a081-aec007a8c48e.DATABASE:hr</OriginalElement>
+  <nodes>
+    <node x="309.0" y="162.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.locations</node>
+    <node x="266.0" y="403.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.mata_uang</node>
+    <node x="307.5" y="80.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.countries</node>
+    <node x="315.0" y="0.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.regions</node>
+    <node x="0.0" y="403.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.flyway_schema_history</node>
+    <node x="203.33333333333331" y="246.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.departments</node>
+    <node x="143.16071428571428" y="328.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.job_history</node>
+    <node x="169.0" y="162.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.employees</node>
+    <node x="147.74404761904762" y="80.0">2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.jobs</node>
+  </nodes>
+  <notes>
+    <note x="110.74404761904762" y="32.0">
+      <node>2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.jobs</node>
+      <value>Ini table untuk apa?</value>
+      <edge>
+        <point x="0.0" y="0.0" />
+        <point x="0.0" y="0.0" />
+      </edge>
+    </note>
+  </notes>
+  <edges>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.employees" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.jobs" relationship="REFERENCES">
+      <point x="0.0" y="-15.0" />
+      <point x="229.0" y="136.0" />
+      <point x="182.24404761904762" y="136.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.job_history" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.departments" relationship="REFERENCES">
+      <point x="31.25" y="-15.0" />
+      <point x="236.91071428571428" y="302.0" />
+      <point x="271.8333333333333" y="302.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.employees" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.departments" relationship="REFERENCES">
+      <point x="0.0" y="15.0" />
+      <point x="229.0" y="224.0" />
+      <point x="226.16666666666669" y="224.0" />
+      <point x="-45.66666666666663" y="-15.0" />
+    </edge>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.departments" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.employees" relationship="REFERENCES">
+      <point x="0.0" y="-15.0" />
+      <point x="271.8333333333333" y="224.0" />
+      <point x="269.0" y="224.0" />
+      <point x="40.0" y="15.0" />
+    </edge>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.employees" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.employees" relationship="REFERENCES">
+      <point x="-40.0" y="15.0" />
+      <point x="189.0" y="212.0" />
+      <point x="149.0" y="212.0" />
+      <point x="149.0" y="177.0" />
+      <point x="-60.0" y="0.0" />
+    </edge>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.countries" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.regions" relationship="REFERENCES">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.departments" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.locations" relationship="REFERENCES">
+      <point x="45.666666666666686" y="-15.0" />
+      <point x="317.5" y="224.0" />
+      <point x="362.5" y="224.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.job_history" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.jobs" relationship="REFERENCES">
+      <point x="-31.25" y="-15.0" />
+      <point x="174.41071428571428" y="302.0" />
+      <point x="138.5" y="302.0" />
+      <point x="138.5" y="136.0" />
+      <point x="182.24404761904762" y="136.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.locations" target="2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.countries" relationship="REFERENCES">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.9139072847682119" showDependencies="false" x="275.27536231884056" y="180.89130434782606" />
+  <SelectedNodes>
+    <node>2e37303f-e4d4-4b7f-a081-aec007a8c48e.TABLE:hr.public.jobs</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Comments</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
