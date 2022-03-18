@@ -24,3 +24,12 @@ SELECT E'*',
 
 SELECT department_name ||  E'\n' || departments.department_id
 from departments;
+
+SELECT DISTINCT job_id
+FROM employees;
+
+SELECT DISTINCT (department_id, job_id), department_id, job_id
+FROM employees;
+
+SELECT DISTINCT on (department_id, job_id) department_id, job_id
+FROM employees;
