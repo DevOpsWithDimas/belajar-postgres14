@@ -1,7 +1,13 @@
+-- ini query untuk menampilkan semua data
 SELECT *
 FROM departments;
 
-SELECT department_id,
+/*
+ ini query untuk
+ menampilkan semua data
+ untuk kolom department_id dan department_name
+ */
+SELECT department_id, -- nama kolomnya adalah department_id
        department_name
 FROM departments;
 
