@@ -15,3 +15,9 @@ SELECT current_date - 2                      as lusa,
        current_date + 1                      as besok,
        current_timestamp                     as sekarang,
        current_timestamp + interval '2 hour' as "kurang 2 jam";
+
+SELECT employee_id AS id,
+       first_name,
+       last_name,
+       last_name || ', ' || first_name
+from employees;
