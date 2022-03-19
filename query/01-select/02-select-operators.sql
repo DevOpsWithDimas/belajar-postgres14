@@ -21,3 +21,9 @@ SELECT employee_id AS id,
        last_name,
        last_name || ', ' || first_name
 from employees;
+
+SELECT cast('100' as int)                  as string_to_int,
+       '100'::int                          as string_to_int_short,
+       cast(100 as character varying(100)) as int_to_string,
+       cast('1000'::varchar as int) + 1000 as tambah,
+       cast('on' as boolean) as to_boolean;
