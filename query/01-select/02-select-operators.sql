@@ -41,3 +41,12 @@ select  (true and true) "AND -> true x true",
         NOT(false) "NOT -> false",
         NOT(null) "NOT -> null",
         NOT(true) "NOT -> true";
+
+SELECT 3 > 4 and 3 > 3 as less_then,
+       3 > 3 as less_then_same,
+       1 >= 3 and (0 < 1 or 1 = 1) as less_then_eq_same,
+       3 <> 3 as not_eq,
+       '19-MAR-2022'::DATE <> '19-MAR-2021'::DATE as date_not_eq,
+       'off'::boolean is not false as compare_boolean,
+       null is not null as nilai_null,
+       'data' is not null as nilai_not_null;
