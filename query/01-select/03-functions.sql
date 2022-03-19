@@ -13,6 +13,21 @@ SELECT 3 * 3      as    multiply,
 SELECT employee_id,
        current_timestamp,
        current_date,
-       start_date                         as mulai_kerja,
+       start_date                                            as mulai_kerja,
        extract(year from age(current_timestamp, start_date)) as tahun_kerja
 FROM job_history;
+
+select COALESCE(null, 'data1', 'data2') return_data1,
+       COALESCE(null, null, 'data2')    return_data2,
+       COALESCE(null, null, null)       return_null,
+       NULLIF(null, 'data1')            return_null1,
+       NULLIF('data1', 'data1')         return_null2,
+       NULLIF('data1', 'data2')         return_data1;
+
+
+select employee_id,
+       commission_pct,
+       coalesce(commission_pct, 0)          commission_pct_no_null,
+       salary,
+       salary * coalesce(commission_pct, 0) commission
+FROM employees;
