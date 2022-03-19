@@ -27,3 +27,17 @@ SELECT cast('100' as int)                  as string_to_int,
        cast(100 as character varying(100)) as int_to_string,
        cast('1000'::varchar as int) + 1000 as tambah,
        cast('on' as boolean) as to_boolean;
+
+select  (true and true) "AND -> true x true",
+        (true and false) "AND -> true x false",
+        (false and false) "AND -> false x false",
+        (null and false) "AND -> null x false",
+        (null and true) "AND -> null x true",
+        (true or true) "OR -> true x true",
+        (true or false) "OR -> true x false",
+        (false or false) "OR -> false x false",
+        (null or true) "OR -> null x true",
+        (null or false) "OR -> null x false",
+        NOT(false) "NOT -> false",
+        NOT(null) "NOT -> null",
+        NOT(true) "NOT -> true";
