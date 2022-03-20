@@ -31,3 +31,13 @@ select employee_id,
        salary,
        salary * coalesce(commission_pct, 0) commission
 FROM employees;
+
+SELECT to_char(100000, '999,999.00'),
+       to_char(1123, 'RN'),
+       to_char(current_timestamp, 'DD/MON/YYYY HH:MI:SS'),
+       to_number('10,000,000', '999,999,999');
+
+SELECT employee_id,
+       to_char(salary, '$L999,999') as gaji,
+       to_char(coalesce(commission_pct, 0) * 100, '999%') as komisi
+FROM employees;
