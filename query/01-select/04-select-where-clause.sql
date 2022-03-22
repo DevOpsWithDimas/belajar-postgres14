@@ -29,3 +29,7 @@ WHERE substring(email from 1 for 1) between 'A' and 'J';
 SELECT *
 FROM job_history
 where start_date between '1993-01-01' and '1993-12-31';
+
+SELECT *
+FROM employees
+WHERE manager_id IS NOT NULL;
