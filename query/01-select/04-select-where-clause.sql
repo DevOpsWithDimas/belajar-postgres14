@@ -33,3 +33,23 @@ where start_date between '1993-01-01' and '1993-12-31';
 SELECT *
 FROM employees
 WHERE manager_id IS NOT NULL;
+
+SELECT *
+FROM employees
+WHERE manager_id = 100
+  and department_id = 90;
+
+SELECT *
+FROM employees
+WHERE manager_id = 100
+   OR department_id = 90;
+
+SELECT *
+FROM employees
+WHERE job_id NOT LIKE '%_MAN';
+
+SELECT *
+FROM employees
+WHERE manager_id = 100
+  AND (department_id = 90 OR SALARY >= 10000)
+  AND commission_pct IS NOT NULL;
