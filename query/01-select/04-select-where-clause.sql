@@ -53,3 +53,11 @@ FROM employees
 WHERE manager_id = 100
   AND (department_id = 90 OR SALARY >= 10000)
   AND commission_pct IS NOT NULL;
+
+SELECT *
+FROM employees
+WHERE first_name SIMILAR TO '%(ph|v)%';
+
+SELECT *
+FROM employees
+WHERE first_name ~ '^S.*(a|v|ph)';
