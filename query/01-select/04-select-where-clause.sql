@@ -61,3 +61,19 @@ WHERE first_name SIMILAR TO '%(ph|v)%';
 SELECT *
 FROM employees
 WHERE first_name ~ '^S.*(a|v|ph)';
+
+SELECT *
+FROM employees
+WHERE job_id IN ('IT_PROG', 'FI_ACCOUNT', 'PU_CLERK');
+
+SELECT *
+FROM employees
+WHERE salary NOT IN (3100, 7700, 4800, 6000);
+
+SELECT *
+FROM employees
+WHERE job_id = ANY (ARRAY['IT_PROG', 'FI_ACCOUNT', 'PU_CLERK']);
+
+SELECT *
+FROM employees
+WHERE salary > ANY (ARRAY [3100, 7700, 4800, 6000]);
