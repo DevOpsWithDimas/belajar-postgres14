@@ -33,3 +33,11 @@ SELECT employee_id,
        salary * coalesce(commission_pct, 0) as commission_currency
 FROM employees
 order by commission_digit desc;
+
+SELECT location_id, department_id, department_name
+FROM departments
+ORDER BY location_id, department_id DESC;
+
+SELECT location_id, department_id, department_name
+FROM departments
+ORDER BY location_id DESC, department_id;
