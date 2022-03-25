@@ -18,6 +18,13 @@ SELECT employee_id,
 FROM employees
 order by salary * COALESCE(commission_pct, 0);
 
+SELECT employee_id,
+       first_name,
+       salary,
+       COALESCE(commission_pct, 0)             commission_digit,
+       salary * coalesce(commission_pct, 0) as commission_currency
+FROM employees
+order by 4 desc;
 
 SELECT employee_id,
        first_name,
