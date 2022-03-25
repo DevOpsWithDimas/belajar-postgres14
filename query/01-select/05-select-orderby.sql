@@ -41,3 +41,13 @@ ORDER BY location_id, department_id DESC;
 SELECT location_id, department_id, department_name
 FROM departments
 ORDER BY location_id DESC, department_id;
+
+SELECT employee_id, salary, commission_pct
+FROM employees
+ORDER BY commission_pct DESC NULLS LAST;
+
+
+SELECT employee_id, salary, manager_id, commission_pct
+FROM employees
+ORDER BY manager_id NULLS FIRST,
+         commission_pct NULLS LAST;
