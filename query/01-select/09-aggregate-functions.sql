@@ -49,3 +49,14 @@ from employees
 group by job_id
 having count(*) >= 5
    and max(salary) >= 10000;
+
+
+--- having and where clause put in together
+
+SELECT job_id,
+       count(*)    employee_by_job,
+       sum(salary) employee_sum_salary_by_job
+from employees
+where job_id in ('FI_ACCOUNT', 'SA_MAN', 'IT_PROG', 'HR_REP', 'MK_MAN')
+group by job_id
+having sum(salary) >= 20000;
