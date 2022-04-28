@@ -64,17 +64,17 @@ having sum(salary) >= 20000;
 
 --- multiple group by clause
 
-select job_id,
-       count(*)    employee_by_job,
-       sum(salary) employee_salary_by_job
-from employees
-group by job_id;
-
-select department_id,
-       count(*)    employee_by_job,
-       sum(salary) employee_salary_by_job
-from employees
-group by department_id;
+-- select job_id,
+--        count(*)    employee_by_job,
+--        sum(salary) employee_salary_by_job
+-- from employees
+-- group by job_id;
+--
+-- select department_id,
+--        count(*)    employee_by_job,
+--        sum(salary) employee_salary_by_job
+-- from employees
+-- group by department_id;
 
 select department_id,
        job_id,
