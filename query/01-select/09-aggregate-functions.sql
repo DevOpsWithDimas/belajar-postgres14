@@ -31,3 +31,21 @@ select department_id, job_id, count(*) as employee_by_dep_and_job
 from employees
 group by department_id, job_id
 order by job_id;
+
+--- using having clause
+
+select job_id,
+       count(*) as employee_by_job,
+       sum(salary) employee_salary_by_job
+from employees
+group by job_id
+having count(*) >= 5;
+
+select job_id,
+       count(*) as employee_by_job,
+       sum(salary) employee_salary_by_job,
+       max(salary) employee_max_salary_by_job
+from employees
+group by job_id
+having count(*) >= 5
+   and max(salary) >= 10000;
