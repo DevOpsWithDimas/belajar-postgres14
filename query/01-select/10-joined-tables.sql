@@ -20,3 +20,16 @@ select emp.employee_id,
 from employees emp
          natural join jobs job
          natural join departments dep;
+
+--- cross join
+select count(*)
+from departments;
+
+select count(*)
+from jobs;
+
+select 28 * 19 as cartesian_rows;
+
+select dep.department_id, dep.department_name, job.job_id, job.job_title
+from departments dep
+         cross join jobs job;
