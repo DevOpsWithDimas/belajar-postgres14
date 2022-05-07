@@ -110,3 +110,18 @@ select emp.employee_id as employee_id,
        man.first_name  as manager_name
 from employees emp
          full outer join employees man on (emp.manager_id = man.employee_id);
+
+--- join condition expression
+
+select emp.employee_id, emp.first_name, dep.department_id, dep.department_name
+from employees emp
+         join departments dep on (emp.department_id = dep.department_id);
+
+select emp.employee_id, emp.first_name, dep.department_id, dep.department_name
+from employees emp
+         join departments dep using (department_id);
+
+select emp.employee_id, emp.first_name, dep.department_id, dep.department_name
+from employees emp,
+     departments dep
+where emp.department_id = dep.department_id;
