@@ -58,3 +58,19 @@ select emp.employee_id,
 from employees emp
          join jobs job on (emp.job_id = job.job_id)
          join departments dep on (dep.department_id = emp.department_id);
+
+--- left or right outer join
+
+select employee_id, department_id
+from employees;
+
+select department_id
+from departments;
+
+select emp.employee_id, emp.first_name, dep.department_id, dep.department_name
+from employees emp
+        left join departments dep on (emp.department_id = dep.department_id);
+
+select emp.employee_id, emp.first_name, dep.department_id, dep.department_name
+from employees emp
+         right join departments dep on (emp.department_id = dep.department_id);
