@@ -33,3 +33,28 @@ select 28 * 19 as cartesian_rows;
 select dep.department_id, dep.department_name, job.job_id, job.job_title
 from departments dep
          cross join jobs job;
+
+--- inner join
+-- select employee_id, first_name, job_id
+-- from employees;
+
+-- select *
+-- from jobs;
+
+select emp.employee_id, emp.first_name, emp.salary as current_salary, job.job_title, job.max_salary
+from employees emp
+         inner join jobs job on (emp.job_id = job.job_id);
+
+select emp.employee_id, emp.first_name, emp.salary as current_salary, job.job_title, job.max_salary
+from employees emp
+         join jobs job on (emp.job_id = job.job_id);
+
+select emp.employee_id,
+       emp.first_name,
+       emp.salary          as current_salary,
+       job.job_title,
+       job.max_salary,
+       dep.department_name as dep_name
+from employees emp
+         join jobs job on (emp.job_id = job.job_id)
+         join departments dep on (dep.department_id = emp.department_id);
