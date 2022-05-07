@@ -69,8 +69,14 @@ from departments;
 
 select emp.employee_id, emp.first_name, dep.department_id, dep.department_name
 from employees emp
-        left join departments dep on (emp.department_id = dep.department_id);
+         left join departments dep on (emp.department_id = dep.department_id);
 
 select emp.employee_id, emp.first_name, dep.department_id, dep.department_name
 from employees emp
          right join departments dep on (emp.department_id = dep.department_id);
+
+--- full outer join
+
+select emp.employee_id, emp.first_name, dep.department_id, dep.department_name
+from employees emp
+         full outer join departments dep on (emp.department_id = dep.department_id);
