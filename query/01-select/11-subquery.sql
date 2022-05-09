@@ -74,3 +74,31 @@ from employees emp
 where emp.salary >= (select avg(job.min_salary)
                      from jobs job
                      where job.job_id = emp.job_id);
+
+--- subquery as predicates for single-row comparison
+select emp.employee_id, emp.first_name, emp.salary, emp.job_id
+from employees emp
+where emp.salary >= (
+    select round(avg(job.max_salary), 0)
+    from jobs job
+);
+
+
+select emp.employee_id, emp.first_name, emp.salary, emp.job_id
+from employees emp
+where emp.salary between (
+    select round(avg(job.min_salary), 0)
+    from jobs job
+) and (
+    select round(avg(job.max_salary), 0)
+    from jobs job
+);
+
+select emp.employee_id, emp.first_name, emp.salary, emp.job_id
+from employees emp
+where (emp.salary, emp.job_id) >= (
+    select job.max_salary, job.job_id
+    from jobs job
+    order by job.job_id
+    limit 1
+);
