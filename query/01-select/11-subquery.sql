@@ -61,3 +61,16 @@ from employees emp,
      lateral (select start_date::date, end_date::date, job_id, department_id
               from job_history job
               where job.employee_id = emp.employee_id) as history;
+
+--- subquery as predicates in where clause
+select emp.employee_id, emp.first_name, emp.salary, emp.job_id
+from employees emp
+where emp.salary >= (select min(job.max_salary)
+                     from jobs job
+                     where job.job_id = 'IT_PROG');
+
+select emp.employee_id, emp.first_name, emp.salary, emp.job_id
+from employees emp
+where emp.salary >= (select avg(job.min_salary)
+                     from jobs job
+                     where job.job_id = emp.job_id);
