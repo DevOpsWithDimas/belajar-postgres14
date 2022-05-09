@@ -51,12 +51,12 @@ where salary >= func.rata2;
 --- lateral subquery / inline view in from clause
 select emp.employee_id,
        emp.first_name,
-       emp.department_id     current_deparment_id,
+       emp.department_id     current_department_id,
        emp.job_id            current_job_id,
        history.start_date,
        history.end_date,
        history.job_id        last_job_id,
-       history.department_id last_deparment_id
+       history.department_id last_department_id
 from employees emp,
      lateral (select start_date::date, end_date::date, job_id, department_id
               from job_history job
