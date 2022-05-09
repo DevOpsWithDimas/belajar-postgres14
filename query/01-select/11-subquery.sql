@@ -33,3 +33,17 @@ from employees emp;
 --        man.job_id     as manager_job_id
 -- from employees emp
 --          left join employees man on (emp.manager_id = man.employee_id);
+
+--- subquery inline view
+select emp.employee_id,
+       emp.first_name,
+       emp.salary,
+       func.rata2 as avg_salary,
+       func.maximum  max_salary,
+       func.minimum  min_salary
+from employees emp,
+     (select round(avg(job.max_salary)) rata2,
+             min(job.max_salary)        minimum,
+             max(job.max_salary)        maximum
+      from jobs job) as func
+where salary >= func.rata2;
