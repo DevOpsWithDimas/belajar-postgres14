@@ -102,3 +102,13 @@ where (emp.salary, emp.job_id) >= (
     order by job.job_id
     limit 1
 );
+
+
+--- subquery as predicates with exists operator
+select *
+from employees emp
+where exists(
+              select true
+              from job_history history
+              where history.employee_id = emp.employee_id
+          );
