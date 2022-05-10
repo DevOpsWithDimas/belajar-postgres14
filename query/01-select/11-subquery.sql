@@ -112,3 +112,22 @@ where exists(
               from job_history history
               where history.employee_id = emp.employee_id
           );
+
+--- subquery as predicate with in operator
+select *
+from employees out
+where out.job_id in (
+    select distinct inq.job_id
+    from employees inq
+    where inq.department_id = 80
+);
+
+select *
+from employees out
+where (out.job_id, out.salary) in (
+    select distinct inq.job_id                      as job_id,
+                    (select max(job.max_salary)
+                     from jobs job
+                     where job.job_id = inq.job_id) as salary
+    from employees inq
+);
