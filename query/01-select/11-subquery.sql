@@ -131,3 +131,37 @@ where (out.job_id, out.salary) in (
                      where job.job_id = inq.job_id) as salary
     from employees inq
 );
+
+--- subquery as predicate with any or some
+select max(salary) max_salary
+from employees
+where department_id in (10, 20, 30, 40)
+group by job_id
+order by max_salary;
+
+select outq.employee_id, outq.first_name, outq.salary, outq.job_id
+from employees outq
+where outq.salary = some (select max(salary) max_salary
+                         from employees
+                         where department_id in (10, 20, 30, 40)
+                         group by job_id
+                         order by max_salary)
+order by salary;
+
+select outq.employee_id, outq.first_name, outq.salary, outq.job_id
+from employees outq
+where outq.salary > some (select max(salary) max_salary
+                          from employees
+                          where department_id in (10, 20, 30, 40)
+                          group by job_id
+                          order by max_salary)
+order by salary;
+
+select outq.employee_id, outq.first_name, outq.salary, outq.job_id
+from employees outq
+where outq.salary < some (select max(salary) max_salary
+                          from employees
+                          where department_id in (10, 20, 30, 40)
+                          group by job_id
+                          order by max_salary)
+order by salary;
