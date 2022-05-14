@@ -142,10 +142,10 @@ order by max_salary;
 select outq.employee_id, outq.first_name, outq.salary, outq.job_id
 from employees outq
 where outq.salary = some (select max(salary) max_salary
-                         from employees
-                         where department_id in (10, 20, 30, 40)
-                         group by job_id
-                         order by max_salary)
+                          from employees
+                          where department_id in (10, 20, 30, 40)
+                          group by job_id
+                          order by max_salary)
 order by salary;
 
 select outq.employee_id, outq.first_name, outq.salary, outq.job_id
@@ -165,3 +165,55 @@ where outq.salary < some (select max(salary) max_salary
                           group by job_id
                           order by max_salary)
 order by salary;
+
+--- subquery as predicate with all operator
+select max(salary) max_salary
+from employees
+where department_id in (10, 20, 30, 40)
+group by job_id
+order by max_salary;
+
+select outq.employee_id, outq.first_name, outq.salary, outq.job_id
+from employees outq
+where outq.salary != ALL (
+    select max(salary) max_salary
+    from employees
+    where department_id in (10, 20, 30, 40)
+    group by job_id
+    order by max_salary
+)
+order by outq.salary;
+
+-- salary = 3100 and salary = 3200 ....
+-- select outq.employee_id, outq.first_name, outq.salary, outq.job_id
+-- from employees outq
+-- where outq.salary = ALL (
+--     select max(salary) max_salary
+--     from employees
+--     where department_id in (10, 20, 30, 40)
+--     group by job_id
+--     order by max_salary
+-- )
+-- order by outq.salary;
+
+select outq.employee_id, outq.first_name, outq.salary, outq.job_id
+from employees outq
+where outq.salary > ALL (
+    select max(salary) max_salary
+    from employees
+    where department_id in (10, 20, 30, 40)
+    group by job_id
+    order by max_salary
+)
+order by outq.salary;
+
+select outq.employee_id, outq.first_name, outq.salary, outq.job_id
+from employees outq
+where outq.salary < ALL (
+    select max(salary) max_salary
+    from employees
+    where department_id in (10, 20, 30, 40)
+    group by job_id
+    order by max_salary
+)
+order by outq.salary;
