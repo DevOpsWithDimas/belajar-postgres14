@@ -39,3 +39,16 @@ select employee_id    as kode_karyawan,
            else 'Tidak memiliki komisi!'
            end        as keterangan
 from employees;
+
+-- using condition expression with case-when in where clause
+select employee_id    as kode_karyawan,
+       first_name     as nama_karyawan,
+       salary         as gaji_sebulan,
+       commission_pct as komisi
+from employees
+where case
+          when commission_pct is null and salary <= 2200 then true
+          when commission_pct is null then false
+          when commission_pct is not null and salary <= 8000 then salary in (7000, 7200, 7500)
+          when commission_pct is not null and salary < 12000 then salary = 11000
+          end;
