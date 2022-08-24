@@ -121,3 +121,51 @@ with recursive managed_by(manager_id, employee_id, first_name, path) as (
 select *
 from managed_by
 order by path;
+
+-- recursive endless loop
+-- with recursive data(n) as (
+--     values (1)
+--     union all
+--     select n + 1
+--     from data
+--     where n > 0
+-- )
+-- select sum(n)
+-- from data;
+
+-- using simple cycle detection
+with recursive managed_by(manager_id, employee_id, first_name, path, depth) as (
+    select man.manager_id, man.employee_id, man.first_name, array [man.employee_id], 0
+    from employees man
+    union all
+    select emp.manager_id, emp.employee_id, emp.first_name, path || emp.employee_id, depth + 1
+    from employees emp
+             join managed_by manager on (emp.manager_id = manager.employee_id)
+)
+select *
+from managed_by
+order by path;
+
+-- using more advanced cycle detection
+with recursive managed_by(manager_id, employee_id, first_name, path, depth, is_cycle) as (
+    select man.manager_id,
+           man.employee_id,
+           man.first_name,
+           array [man.employee_id],
+           0,
+           false
+    from employees man
+    union all
+    select emp.manager_id,
+           emp.employee_id,
+           emp.first_name,
+           path || emp.employee_id,
+           depth + 1,
+           emp.employee_id = any (path)
+    from employees emp
+             join managed_by manager on (emp.manager_id = manager.employee_id)
+    where NOT is_cycle
+)
+select *
+from managed_by
+order by path;
