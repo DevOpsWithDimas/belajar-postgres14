@@ -63,3 +63,33 @@ with employees_in_specific_department as
      )
 select *
 from employees_with_highest_commission;
+
+-- sum of numbers from 1 through 100
+with recursive data(n) as (
+    values (1)
+    union all
+    select n + 1
+    from data
+    where n < 100
+)
+select sum(n)
+from data;
+
+-- get manager with employees
+select emp.employee_id, emp.first_name, man.employee_id, man.first_name
+from employees man
+         join employees emp on emp.manager_id = man.employee_id
+where man.employee_id = 101;
+
+-- get manager with employees with childern
+with recursive managed_by(manager_id, employee_id, first_name) as (
+    select man.manager_id, man.employee_id, man.first_name
+    from employees man
+    where man.employee_id = 101
+    union all
+    select emp.manager_id, emp.employee_id, emp.first_name
+    from employees emp
+             join managed_by manager on (emp.manager_id = manager.employee_id)
+)
+select *
+from managed_by;
