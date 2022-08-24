@@ -93,3 +93,31 @@ with recursive managed_by(manager_id, employee_id, first_name) as (
 )
 select *
 from managed_by;
+
+-- simple search order using employee_id
+with recursive managed_by(manager_id, employee_id, first_name, path) as (
+    select man.manager_id, man.employee_id, man.first_name, array [man.employee_id]
+    from employees man
+    where man.employee_id = 101
+    union all
+    select emp.manager_id, emp.employee_id, emp.first_name, path || emp.employee_id
+    from employees emp
+             join managed_by manager on (emp.manager_id = manager.employee_id)
+)
+select *
+from managed_by
+order by path;
+
+-- using multiple column order by path
+with recursive managed_by(manager_id, employee_id, first_name, path) as (
+    select man.manager_id, man.employee_id, man.first_name, array [row (man.employee_id, man.salary)]
+    from employees man
+    where man.employee_id = 101
+    union all
+    select emp.manager_id, emp.employee_id, emp.first_name, array [row (emp.employee_id, emp.salary)]
+    from employees emp
+             join managed_by manager on (emp.manager_id = manager.employee_id)
+)
+select *
+from managed_by
+order by path;
