@@ -28,3 +28,10 @@ from employees emp
          join jobs job on emp.job_id = job.job_id
          left join employees man on emp.manager_id = man.employee_id
 order by manager_name, nama_karyawan;
+
+--  pembahasa soal no 3
+select dep.department_id dep_id, dep.department_name dep_name, to_char(sum(salary), '999,999,999') total_gaji
+from departments dep
+         join employees emp on dep.department_id = emp.department_id
+group by dep_id, dep_name
+order by total_gaji desc;
