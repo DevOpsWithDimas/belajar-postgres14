@@ -58,3 +58,19 @@ where emp.salary >= (
     where k.job_id = 'IT_PROG')
   and emp.commission_pct is not null
 order by salary desc;
+
+-- pembahasan soal no 6
+with employees_in_us as (
+    select e.*, dep.department_name, loc.city
+    from departments dep
+             join locations loc on dep.location_id = loc.location_id
+             left join employees e on dep.manager_id = e.employee_id
+    where loc.country_id = 'US'
+      and dep.manager_id is not null)
+select employee_id                as emp_id,
+       upper(first_name)          as emp_name,
+       to_char(salary, '999,999') as emp_salary,
+       department_name               dep_name,
+       city                          dep_city
+from employees_in_us
+order by salary desc;
