@@ -43,3 +43,18 @@ from employees
 where commission_pct is not null
 group by gaji_setahun
 order by gaji_setahun desc;
+
+-- pembahasan soal no 5
+select emp.employee_id                            kode_karyawan,
+       concat(emp.first_name, ' ', emp.last_name) nama_lengkap,
+       to_char(emp.salary, '999,999,999') as      gaji_karyawan,
+       j.job_title                                jabatan,
+       emp.email
+from employees emp
+         join jobs j on emp.job_id = j.job_id
+where emp.salary >= (
+    select max(k.salary)
+    from employees k
+    where k.job_id = 'IT_PROG')
+  and emp.commission_pct is not null
+order by salary desc;
