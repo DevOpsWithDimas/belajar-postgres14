@@ -29,9 +29,17 @@ from employees emp
          left join employees man on emp.manager_id = man.employee_id
 order by manager_name, nama_karyawan;
 
---  pembahasa soal no 3
+--  pembahasan soal no 3
 select dep.department_id dep_id, dep.department_name dep_name, to_char(sum(salary), '999,999,999') total_gaji
 from departments dep
          join employees emp on dep.department_id = emp.department_id
 group by dep_id, dep_name
 order by total_gaji desc;
+
+-- pembahasan soal no 4
+select salary * 12 as     gaji_setahun,
+       count(employee_id) kode_karyawan
+from employees
+where commission_pct is not null
+group by gaji_setahun
+order by gaji_setahun desc;
