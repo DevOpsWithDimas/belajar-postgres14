@@ -9,3 +9,7 @@ from regions;
 UPDATE regions
 SET region_name = 'Oceania'
 WHERE region_id = 5;
+
+-- simple delete statement
+DELETE FROM regions
+WHERE region_id = 5;
