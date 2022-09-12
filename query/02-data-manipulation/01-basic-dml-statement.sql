@@ -11,5 +11,14 @@ SET region_name = 'Oceania'
 WHERE region_id = 5;
 
 -- simple delete statement
-DELETE FROM regions
+DELETE
+FROM regions
 WHERE region_id = 5;
+
+-- simple returning data
+select nextval('regions_region_id_seq');
+alter sequence regions_region_id_seq restart start 10;
+
+INSERT INTO regions (region_id, region_name)
+VALUES (default, 'Other')
+returning *;
