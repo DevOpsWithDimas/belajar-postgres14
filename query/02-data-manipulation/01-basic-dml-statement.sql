@@ -5,6 +5,7 @@ VALUES (5, 'Asia Tengara');
 select *
 from regions;
 
+-- simple update statement
 UPDATE regions
 SET region_name = 'Oceania'
 WHERE region_id = 5;
