@@ -48,3 +48,14 @@ values ('ID', 'Indonesia', 3),
 SELECT *
 FROM countries
 where country_id in ('ID', 'SI', 'TH');
+
+--- insert with on conflict action
+INSERT INTO countries(country_id, country_name, region_id)
+values ('ID', 'Republic Indonesia', 3)
+on conflict (country_id) do nothing;
+
+INSERT INTO countries(country_id, country_name, region_id)
+values ('ID', 'Republic Indonesia', 3)
+on conflict (country_id) do update
+    set country_name = excluded.country_name,
+        region_id    = excluded.region_id;
