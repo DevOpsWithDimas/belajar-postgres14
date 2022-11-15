@@ -16,3 +16,25 @@ VALUES (1, '2018-07-15 12:15:00', 'IT_PROG');
 SELECT *
 FROM job_history
 where employee_id = 1;
+
+-- insert with default value
+INSERT INTO employees(email, first_name, last_name, job_id)
+values ('DIMAS2', initcap('dimas'), initcap('maryanto'), upper('it_prog'));
+
+select *
+from employees
+where email = 'DIMAS2';
+
+INSERT INTO employees(email, first_name, salary, last_name, job_id)
+values ('DIMAS3', initcap('dimas'), default, initcap('maryanto'), upper('it_prog'));
+
+select *
+from employees
+where email = 'DIMAS3';
+
+INSERT INTO employees(email, first_name, salary, last_name, job_id)
+values ('DIMAS4', initcap('dimas'), null, initcap('maryanto'), upper('it_prog'));
+
+select *
+from employees
+where email = 'DIMAS4';
