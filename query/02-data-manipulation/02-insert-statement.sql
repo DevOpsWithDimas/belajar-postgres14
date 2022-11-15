@@ -38,3 +38,13 @@ values ('DIMAS4', initcap('dimas'), null, initcap('maryanto'), upper('it_prog'))
 select *
 from employees
 where email = 'DIMAS4';
+
+--- insert with multiple rows
+INSERT INTO countries(country_id, country_name, region_id)
+values ('ID', 'Indonesia', 3),
+       ('SI', 'Singapure', 3),
+       ('TH', 'Thailand', 3);
+
+SELECT *
+FROM countries
+where country_id in ('ID', 'SI', 'TH');
