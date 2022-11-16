@@ -59,3 +59,23 @@ values ('ID', 'Republic Indonesia', 3)
 on conflict (country_id) do update
     set country_name = excluded.country_name,
         region_id    = excluded.region_id;
+
+--- insert using with query
+WITH insert_emp as (
+    INSERT INTO employees (email, first_name, last_name, salary, job_id, department_id)
+        values ('DIMAS8', initcap('dimas'), initcap('maryanto'), '15000', upper('it_prog'), 10)
+        returning employee_id, job_id, department_id)
+INSERT
+INTO job_history(employee_id, start_date, job_id, department_id)
+select employee_id, now(), job_id, department_id
+from insert_emp
+returning employee_id;
+
+select *
+from employees
+where email = 'DIMAS8';
+
+select *
+from job_history
+where employee_id = 8;
+
