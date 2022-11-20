@@ -61,3 +61,20 @@ SET salary         = job.min_salary,
 FROM jobs job
 WHERE (emp.job_id in ('IT_PROG', 'AD_ASST'))
   and department_id in (10, 20);
+
+--- update statement using returning clause
+UPDATE employees emp
+SET salary         = job.min_salary,
+    commission_pct = 0.4
+FROM jobs job
+WHERE (emp.job_id = job.job_id)
+  and department_id = 10
+RETURNING *;
+
+UPDATE employees emp
+SET salary         = job.min_salary,
+    commission_pct = 0.4
+FROM jobs job
+WHERE (emp.job_id = job.job_id)
+  and department_id in (10, 20)
+RETURNING employee_id, first_name, last_name, salary, commission_pct, job.job_id;
