@@ -20,4 +20,16 @@ where employee_id in (114, 122);
 DELETE
 FROM employees emp
 WHERE employee_id in (
-    select employee_id from job_history jh where jh.job_id = 'ST_CLERK')
+    select employee_id
+    from job_history jh
+    where jh.job_id = 'ST_CLERK')
+
+
+--- delete statement using returning clause
+SELECT *
+FROM countries;
+
+DELETE
+FROM countries
+WHERE country_id in ('ZM', 'ZW')
+RETURNING country_id, country_name;
