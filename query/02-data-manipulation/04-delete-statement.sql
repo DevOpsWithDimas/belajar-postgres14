@@ -33,3 +33,19 @@ DELETE
 FROM countries
 WHERE country_id in ('ZM', 'ZW')
 RETURNING country_id, country_name;
+
+--- delete statement using with query
+select distinct employee_id
+from job_history
+where start_date >= '1995-01-01';
+
+WITH history_emps_from_1995 as (
+    select distinct employee_id
+    from job_history
+    where start_date >= '1995-01-01'
+)
+DELETE
+FROM employees emp
+    USING history_emps_from_1995 h
+where emp.employee_id = h.employee_id
+RETURNING emp.employee_id, emp.job_id, emp.department_id;
