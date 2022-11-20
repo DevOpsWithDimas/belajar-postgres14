@@ -22,7 +22,7 @@ FROM employees emp
 WHERE employee_id in (
     select employee_id
     from job_history jh
-    where jh.job_id = 'ST_CLERK')
+    where jh.job_id = 'ST_CLERK');
 
 
 --- delete statement using returning clause
