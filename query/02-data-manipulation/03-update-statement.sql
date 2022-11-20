@@ -41,3 +41,15 @@ SET salary         = (
     where emp.job_id = job.job_id),
     commission_pct = 0.2
 WHERE department_id = 10;
+
+--- select using with query
+WITH default_salary as (
+    select job_id, min_salary, 0.3 commission_pct
+    from jobs)
+UPDATE employees emp
+SET (salary, commission_pct) = (
+    select ds.min_salary, ds.commission_pct
+    from default_salary ds
+    where ds.job_id = emp.job_id
+)
+where department_id = 10;
