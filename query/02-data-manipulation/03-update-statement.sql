@@ -53,3 +53,11 @@ SET (salary, commission_pct) = (
     where ds.job_id = emp.job_id
 )
 where department_id = 10;
+
+--- update statement using from clause
+UPDATE employees emp
+SET salary         = job.min_salary,
+    commission_pct = 0.4
+FROM jobs job
+WHERE (emp.job_id in ('IT_PROG', 'AD_ASST'))
+  and department_id in (10, 20);
