@@ -15,3 +15,12 @@ select *
 from pg_prepared_statements;
 
 DEALLOCATE create_a_employee;
+
+--- create input placeholder
+select employee_id, first_name, last_name, salary, commission_pct, job_id, department_id
+from employees
+where job_id = ? and department_id = ?;
+
+select employee_id, first_name, last_name, salary, commission_pct, job_id, department_id
+from employees
+where job_id = :job_id and department_id = :dep_id;
