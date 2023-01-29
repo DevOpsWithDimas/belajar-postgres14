@@ -10,7 +10,11 @@ from departments;
 TRUNCATE table departments restart identity cascade;
 select nextval('departments_department_id_seq');
 
-select * from employees;
+select *
+from employees;
 
 select *
 from regions;
+
+--- vaccum
+VACUUM (VERBOSE, ANALYSE ) employees;
