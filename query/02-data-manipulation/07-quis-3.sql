@@ -17,3 +17,11 @@ values (6230, 'Cinunuk', 40626, 'Kab. Bandung', 'Jawa Barat', 'ID'),
 select *
 from locations
 where location_id in (6230, 6231, 6233, 6234, 6235);
+
+--- soal no 3
+UPDATE employees SET commission_pct = 0.10
+WHERE (employee_id <> 104) and job_id = 'IT_PROG';
+
+select employee_id, first_name, commission_pct
+from employees
+where job_id= 'IT_PROG';
