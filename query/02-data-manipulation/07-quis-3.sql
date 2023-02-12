@@ -58,3 +58,18 @@ SELECT nama_depan,
        (select d2.manager_id from divisi d2)
 from nama_lengkap
 returning *;
+
+--- soal no 5
+INSERT INTO jobs as j1 (job_id, job_title, min_salary, max_salary)
+VALUES (:job_id, :job_title,
+        (select j2.max_salary from jobs j2 where j2.job_id = 'IT_PROG'),
+        (select (j2.min_salary + 15000) from jobs j2 where j2.job_id = 'IT_PROG'))
+on conflict (job_id) do update
+    set job_title  = excluded.job_title,
+        min_salary = (select j2.max_salary from jobs j2 where j2.job_id = 'IT_PROG'),
+        max_salary = (select (j2.min_salary + 15000) from jobs j2 where j2.job_id = 'IT_PROG')
+returning *;
+
+select *
+from jobs
+where job_id = 'IT_PROG';
