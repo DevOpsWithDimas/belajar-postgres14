@@ -27,3 +27,34 @@ WHERE (employee_id <> 104)
 select employee_id, first_name, commission_pct
 from employees
 where job_id = 'IT_PROG';
+
+--- soal no 4
+with jabatan as (
+    select 'IT_PROG' as job_id
+),
+     rentang_gaji as (
+         select job_id, min_salary, max_salary, ((min_salary + max_salary) / 2) med_salary
+         from jobs
+         where job_id = (select job_id from jabatan limit 1)
+     ),
+     divisi as (
+         select department_id, department_name, manager_id
+         from departments
+         where department_name = 'IT'
+     ),
+     nama_lengkap as (
+         select 'Dimas' as nama_depan, 'Maryanto' as nama_belakang, '08211731234' telp
+     )
+INSERT
+INTO employees (first_name, last_name, email, phone_number, job_id, salary, commission_pct, department_id, manager_id)
+SELECT nama_depan,
+       nama_belakang,
+       upper(nama_depan),
+       telp,
+       (select j.job_id from jabatan j),
+       (select med_salary from rentang_gaji),
+       0.9,
+       (select d.department_id from divisi d),
+       (select d2.manager_id from divisi d2)
+from nama_lengkap
+returning *;
