@@ -1,0 +1,19 @@
+--- default behavior
+INSERT INTO regions(region_id, region_name)
+VALUES (10, 'Other');
+
+select * from regions where region_id = 10;
+
+--- manual behavior by editor
+INSERT INTO regions(region_id, region_name)
+VALUES (11, 'Other 2');
+
+select * from regions where region_id = 11;
+
+--- manual behavior by query
+BEGIN;
+
+INSERT INTO regions(region_id, region_name)
+VALUES (12, 'Other 3');
+
+select * from regions where region_id = 12;
