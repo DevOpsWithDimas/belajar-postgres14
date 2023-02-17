@@ -44,25 +44,3 @@ from regions
 where region_id = 10;
 
 COMMIT;
-
---- using rollback normal schenario
-BEGIN;
-UPDATE regions
-SET region_name = 'Asia Pasific 2'
-where region_id = 10;
-
-select *
-from regions
-where region_id = 10;
-
-ROLLBACK;
-
---- using rollback with error
-BEGIN;
-
-INSERT INTO regions(region_id, region_name)
-VALUES (10, 'Other');
-
-ROLLBACK;
-
-select * from regions;
